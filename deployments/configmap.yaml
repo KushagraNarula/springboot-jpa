@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backendmap
+  namespace: kushagranarula-dev
+data:
+  db_host: postgresql
+  db_name: sampledb
+  db_port: '5432'
+  ddl_auto: none

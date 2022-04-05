@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backendapp
+  annotations:
+  namespace: kushagranarula-dev
+spec:
+  selector:
+    matchLabels:
+      app: backendapp
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: backendapp
+    spec:
+      containers:
+        - name: backendapp
+          image: https://image-registry.openshift-image-registry.svc:5000/kushagranarula-dev/springboot-jpa:latest
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: backendmap
+            - secretRef:
+                name: backendsecrete
